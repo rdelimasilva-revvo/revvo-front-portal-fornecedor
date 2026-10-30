@@ -1,0 +1,17 @@
+/* ============================================================
+   Revvo — Web Fonts (SELF-HOSTED · per Brandbook, cap. 02 — Tipografias)
+   ------------------------------------------------------------
+   - Onest is the single brand family: display/titles AND text/UI.
+     (--font-display and --font-sans both resolve to Onest; weight,
+     size and tracking carry the hierarchy.)
+   Binary ships in assets/fonts/ — NO external CDN, works offline.
+   Onest is the variable font (100–900).
+   ============================================================ */
+
+@font-face {
+  font-family: 'Onest';
+  src: url('../assets/fonts/Onest-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}

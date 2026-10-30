@@ -1,26 +1,66 @@
-import React, { useState } from 'react';
-import { Header } from './components/Layout/Header';
-import { Sidebar } from './components/Layout/Sidebar';
+import { useState } from 'react';
 import { Dashboard } from './components/Dashboard/Dashboard';
 import { DuplicataList } from './components/Duplicatas/DuplicataList';
 import { XMLUpload } from './components/Upload/XMLUpload';
 import { SupplierDashboard } from './components/Suppliers/SupplierDashboard';
 import { SupplierDuplicatas } from './components/Suppliers/SupplierDuplicatas';
-import { SupplierDiscounts } from './components/Suppliers/SupplierDiscounts';
 import { SupplierAntecipacoes } from './components/Suppliers/SupplierAntecipacoes';
 import { AutomationRules } from './components/Automation/AutomationRules';
 import { AccountsReceivable } from './components/AccountsReceivable/AccountsReceivable';
 import { AccountsPayable } from './components/AccountsPayable/AccountsPayable';
 import { Escrituracao } from './components/Escrituracao/Escrituracao';
 import { PaymentDomicileControl } from './components/PaymentDomicile/PaymentDomicileControl';
+import {
+  Toaster, Layout, Login, Home, Recebiveis, Operacoes, Cadastro, Notificacoes, GestaoDuplicatas, Duplicatas, Contratos,
+  Liquidacoes, Extrato, AcordosComerciais,
+  type PaginaCedente, type ParametrosNavegacao
+} from './cedente';
+
+// Página pedida por uma tela -> seção do menu.
+const SECAO_DA_PAGINA: Record<PaginaCedente, string> = {
+  home: 'cedente-home',
+  recebiveis: 'cedente-recebiveis',
+  operacoes: 'cedente-operacoes',
+  cadastro: 'cedente-cadastro',
+  notificacoes: 'cedente-notificacoes',
+  'criar-duplicatas': 'escrituracao-criar-duplicatas',
+  duplicatas: 'escrituracao-duplicatas',
+  acordos: 'fornecedor-abatimentos',
+  liquidacoes: 'escrituracao-liquidacoes',
+  contratos: 'antecipacao-contratos',
+  extrato: 'antecipacao-extrato'
+};
+
+// shortcut: sessão só no sessionStorage, sem autenticação real; trocar pelo login do backend.
+const CHAVE_SESSAO = 'revvo.cedente.sessao';
 
 function App() {
-  const [activeSection, setActiveSection] = useState('fornecedor-dashboard');
+  const [logado, setLogado] = useState(() => sessionStorage.getItem(CHAVE_SESSAO) === '1');
+  const [activeSection, setActiveSection] = useState('cedente-home');
+  const [parametros, setParametros] = useState<ParametrosNavegacao>({});
 
-  const mockUser = {
-    name: 'João Silva',
-    company: 'SAP Brasil'
+  const navegarCedente = (pagina: PaginaCedente, params?: ParametrosNavegacao | null) => {
+    setParametros(params || {});
+    setActiveSection(SECAO_DA_PAGINA[pagina]);
   };
+
+  const selecionarSecao = (secao: string) => {
+    setParametros({});
+    setActiveSection(secao);
+  };
+
+  const entrar = () => {
+    sessionStorage.setItem(CHAVE_SESSAO, '1');
+    setActiveSection('cedente-home');
+    setLogado(true);
+  };
+
+  const sair = () => {
+    sessionStorage.removeItem(CHAVE_SESSAO);
+    setLogado(false);
+  };
+
+  const tela = { onNavegar: navegarCedente, parametros };
 
   const renderContent = () => {
     switch (activeSection) {
@@ -35,9 +75,29 @@ function App() {
       case 'fornecedor-duplicatas':
         return <SupplierDuplicatas />;
       case 'fornecedor-abatimentos':
-        return <SupplierDiscounts />;
+        return <AcordosComerciais {...tela} />;
       case 'fornecedor-antecipacoes':
         return <SupplierAntecipacoes />;
+      case 'escrituracao-criar-duplicatas':
+        return <GestaoDuplicatas {...tela} />;
+      case 'escrituracao-duplicatas':
+        return <Duplicatas {...tela} />;
+      case 'escrituracao-liquidacoes':
+        return <Liquidacoes {...tela} />;
+      case 'antecipacao-contratos':
+        return <Contratos {...tela} />;
+      case 'antecipacao-extrato':
+        return <Extrato {...tela} />;
+      case 'cedente-home':
+        return <Home {...tela} />;
+      case 'cedente-recebiveis':
+        return <Recebiveis {...tela} />;
+      case 'cedente-operacoes':
+        return <Operacoes operacaoIdInicial={parametros.operacaoId} onNavegar={navegarCedente} />;
+      case 'cedente-cadastro':
+        return <Cadastro />;
+      case 'cedente-notificacoes':
+        return <Notificacoes {...tela} />;
       case 'regras':
         return <AutomationRules />;
       case 'contas-pagar':
@@ -77,16 +137,27 @@ function App() {
     }
   };
 
+  if (!logado) {
+    return (
+      <>
+        <Toaster />
+        <Login onEntrar={entrar} />
+      </>
+    );
+  }
+
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'var(--sap-content-background)' }}>
-      <Header user={mockUser} />
-      <div className="flex">
-        <Sidebar activeSection={activeSection} onSectionChange={setActiveSection} />
-        <main className="flex-1">
-          {renderContent()}
-        </main>
-      </div>
-    </div>
+    <>
+      <Toaster />
+      <Layout
+        currentPage={activeSection}
+        setCurrentPage={selecionarSecao}
+        onSair={sair}
+        semPadding={activeSection.startsWith('fornecedor-') && activeSection !== 'fornecedor-abatimentos'}
+      >
+        {renderContent()}
+      </Layout>
+    </>
   );
 }
 

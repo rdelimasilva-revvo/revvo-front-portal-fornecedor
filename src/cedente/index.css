@@ -1,0 +1,24 @@
+@import url('./ds/styles.css');
+
+/* As variáveis herdadas do app apontam para os tokens do Revvo Design System
+   (src/ds/tokens). Assim as telas antigas, escritas contra estes nomes, passam
+   a usar a marca sem precisar ser reescritas uma a uma. */
+:root {
+  --primary-text: var(--text-strong);
+  --secondary-text: var(--text-muted);
+  --primary-blue: var(--revvo-blue-500);
+  --primary-green: var(--revvo-green-400);
+  --error: var(--danger-700);
+  --success: var(--revvo-green-700);
+  --warning: var(--warning-700);
+  --border-color: var(--border-subtle);
+  --background: var(--surface-page);
+  --hover-bg: var(--surface-hover);
+}
+
+/* O runtime de ícones desenha o SVG a 100% dentro do <i>; sem bloco, o <i> inline ignora a largura e o ícone estoura. */
+i[data-lucide] {
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
+}

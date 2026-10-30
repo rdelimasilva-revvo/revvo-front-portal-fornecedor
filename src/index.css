@@ -2,26 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* SAP Fiori Design System */
+/* Nomes herdados do tema SAP, agora apontando para os tokens do Revvo Design System (src/cedente/ds/tokens). */
 :root {
-  --sap-shell-color: #354a5f;
-  --sap-shell-hover: #2b3e50;
-  --sap-brand-color: #0070f2;
-  --sap-brand-hover: #0064d9;
-  --sap-content-background: #f7f7f7;
-  --sap-tile-background: #ffffff;
-  --sap-border-color: #e5e5e5;
-  --sap-text-color: #32363a;
-  --sap-text-muted: #6a6d70;
-  --sap-success-color: #107e3e;
-  --sap-error-color: #b00;
-  --sap-warning-color: #e9730c;
-  --sap-info-color: #0070f2;
-  --sap-shadow: 0 0 0.125rem 0 rgba(0, 0, 0, 0.1), 0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.1);
+  --sap-shell-color: var(--revvo-blue-500);
+  --sap-shell-hover: var(--revvo-blue-600);
+  --sap-brand-color: var(--revvo-blue-500);
+  --sap-brand-hover: var(--revvo-blue-600);
+  --sap-content-background: var(--surface-page);
+  --sap-tile-background: var(--surface-card);
+  --sap-border-color: var(--border-subtle);
+  --sap-text-color: var(--text-strong);
+  --sap-text-muted: var(--text-muted);
+  --sap-success-color: var(--revvo-green-700);
+  --sap-error-color: var(--danger-700);
+  --sap-warning-color: var(--warning-700);
+  --sap-info-color: var(--info-500);
+  --sap-shadow: var(--shadow-sm);
 }
 
 body {
-  font-family: "72", "72full", Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   background-color: var(--sap-content-background);
   color: var(--sap-text-color);
   margin: 0;
@@ -51,7 +51,7 @@ body {
 /* SAP Fiori Cards */
 .sap-card {
   background: var(--sap-tile-background);
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--border-subtle);
   border-radius: 0.5rem;
   box-shadow: none;
   padding: 1rem;
@@ -59,7 +59,7 @@ body {
 
 .sap-tile {
   background: var(--sap-tile-background);
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--border-subtle);
   border-radius: 0.5rem;
   box-shadow: none;
   padding: 1.5rem;
@@ -107,21 +107,21 @@ body {
 }
 
 .sap-button-secondary:hover {
-  background: #f0f8ff;
+  background: var(--surface-hover);
   border-color: var(--sap-brand-hover);
 }
 
 /* SAP Fiori Table */
 .sap-table {
   background: var(--sap-tile-background);
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--border-subtle);
   border-radius: 0.5rem;
   overflow: hidden;
 }
 
 .sap-table th {
-  background: #f7f7f7;
-  border-bottom: 1px solid #f0f0f0;
+  background: var(--surface-page);
+  border-bottom: 1px solid var(--border-subtle);
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
   font-weight: 600;
@@ -131,38 +131,38 @@ body {
 
 .sap-table td {
   padding: 4px 1rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-subtle);
   font-size: 0.875rem;
   color: var(--sap-text-color);
 }
 
 .sap-table tr:hover {
-  background: #f8f9fa;
+  background: var(--surface-hover);
 }
 
 /* SAP Fiori Status Indicators */
 .sap-status-success {
   background: white;
   color: var(--sap-success-color);
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--border-subtle);
 }
 
 .sap-status-error {
   background: white;
   color: var(--sap-error-color);
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--border-subtle);
 }
 
 .sap-status-warning {
   background: white;
   color: var(--sap-warning-color);
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--border-subtle);
 }
 
 .sap-status-info {
   background: white;
   color: var(--sap-info-color);
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--border-subtle);
 }
 
 /* SAP Fiori Navigation */
@@ -181,13 +181,13 @@ body {
 }
 
 .sap-nav-item:hover {
-  background: #f0f0f0;
+  background: var(--border-subtle);
   color: var(--sap-brand-color);
 }
 
 .sap-nav-item.active {
-  background: #eaf7ff;
-  color: #1474f2;
+  background: var(--surface-hover);
+  color: var(--revvo-blue-500);
 }
 
 /* SAP Fiori Shell */
@@ -199,12 +199,12 @@ body {
   align-items: center;
   padding: 0 1rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .sap-shell-sidebar {
   background: white;
-  border-right: 1px solid #f0f0f0;
+  border-right: 1px solid var(--border-subtle);
   width: 15rem;
   min-height: calc(100vh - 2.75rem);
 }
@@ -212,7 +212,7 @@ body {
 /* SAP Fiori Metrics */
 .sap-metric-tile {
   background: var(--sap-tile-background);
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--border-subtle);
   border-radius: 0.5rem;
   padding: 1.5rem;
   box-shadow: none;
@@ -252,7 +252,7 @@ body {
 
 /* SAP Fiori Form Elements */
 .sap-input {
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--border-subtle);
   border-radius: 0.25rem;
   height: 2rem;
   padding: 0 0.75rem;
@@ -268,7 +268,7 @@ body {
 }
 
 .sap-select {
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--border-subtle);
   border-radius: 0.25rem;
   height: 2rem;
   padding: 0 0.75rem;

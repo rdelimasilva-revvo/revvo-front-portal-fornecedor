@@ -1,0 +1,398 @@
+/* ============================================================
+   Revvo — Color Tokens
+   Primary: Revvo Blue #162D60  ·  Text: Dark 100 #131E2E
+   Secondary: Soft Blue #1D518C  ·  Accent: Revvo Green #21DDAE
+   ============================================================ */
+
+:root {
+  /* ---- Brand: Revvo Blue (primary) ---- */
+  --revvo-blue-700: #0E1E45;
+  --revvo-blue-600: #122651;
+  --revvo-blue-500: #162D60;  /* PRIMARY — present in most artwork */
+  --revvo-blue-400: #284178;
+  --revvo-blue-300: #45608F;
+
+  /* ---- Secondary: Soft Blue ---- */
+  --soft-blue-600: #163F6E;
+  --soft-blue-500: #1D518C;   /* secondary base */
+  --soft-blue-400: #2E6BAE;
+  --soft-blue-300: #5A92CF;
+  --soft-blue-200: #A7C5E6;
+  --soft-blue-100: #DCE9F6;
+
+  /* ---- Accent: Revvo Green ---- */
+  --revvo-green-600: #12A37E;
+  --revvo-green-500: #18C198;
+  --revvo-green-400: #21DDAE;  /* accent base */
+  --revvo-green-300: #5CE9C4;
+  --revvo-green-200: #9CF2DB;
+  --revvo-green-100: #D6FAF0;
+
+  /* ---- Dark scale (text / deep surfaces) ---- */
+  --dark-110: #091321;  /* deepest navy — quote/section slide backgrounds */
+  --dark-100: #131E2E;  /* primary text */
+  --dark-90:  #1B293C;
+  --dark-80:  #2A3A4F;
+  --dark-60:  #44566B;
+  --dark-40:  #5B6E82;  /* AA-adjusted (was #6B7C90 — 3.9:1 on white, fails AA text) */
+  --dark-20:  #9AA8B8;  /* disabled-only — do not use for readable text */
+
+  /* ---- Light / Neutral scale (Light 10–50) ---- */
+  --white:    #FFFFFF;
+  --light-10: #F6F8FB;  /* lightest background */
+  --light-20: #EEF2F8;
+  --light-30: #E2E8F2;
+  --light-40: #D2DBE7;
+  --light-50: #BCC8D8;  /* wireframe / divider strong */
+
+  /* ---- Semantic status ---- */
+  --success-500: #18C198;
+  --success-100: #D6FAF0;
+  --warning-500: #E8A93B;
+  --warning-100: #FBEFD6;
+  --danger-500:  #E0524D;
+  --danger-100:  #FBE0DF;
+  --info-500:    #2E6BAE;
+  --info-100:    #DCE9F6;
+
+  /* ---- Text-safe status variants (4.5:1+ on white — use for text/icons, not fills) ---- */
+  --revvo-green-700: #0C7A5F;
+  --warning-700: #9A6A16;
+  --danger-700:  #A83B37;
+
+  /* ---- Official gradients ---- */
+  --gradient-brand: linear-gradient(135deg, #162D60 0%, #131E2E 100%); /* @kind color */
+  --gradient-accent: linear-gradient(135deg, #21DDAE 0%, #162D60 100%); /* @kind color */
+  --gradient-header: linear-gradient(90deg, #0C1835 0%, #163F6D 100%); /* @kind color */
+
+  /* ============ Semantic aliases ============ */
+  --color-primary: var(--revvo-blue-500);
+  --color-primary-hover: var(--revvo-blue-600);
+  --color-primary-active: var(--revvo-blue-700);
+  --color-accent: var(--revvo-green-400);
+  --color-accent-strong: var(--revvo-green-600);
+
+  --text-strong: var(--dark-100);
+  --text-body: var(--dark-80);
+  --text-muted: var(--dark-40);
+  --text-on-brand: var(--white);
+  --text-link: var(--soft-blue-500);
+
+  --surface-page: var(--light-10);
+  --surface-card: var(--white);
+  --surface-sunken: var(--light-20);
+  --surface-brand: var(--revvo-blue-500);
+  --surface-inverse: var(--dark-100);
+
+  --border-subtle: var(--light-30);
+  --border-default: var(--light-40);
+  --border-strong: var(--light-50);
+  --border-focus: var(--soft-blue-400);
+}
+
+/* ============ Light theme (explicit) ============
+   The DS is LIGHT by default. This block lets any subtree PIN light even when an
+   ancestor (e.g. a host preview that mirrors its dark chrome onto the iframe)
+   sets data-theme="dark" on the document root — a nearer [data-theme="light"]
+   wrapper wins for its own subtree. All Revvo specimen cards and app screens
+   carry data-theme="light" on <body> so they always render as designed. */
+[data-theme="light"] {
+  --text-strong: var(--dark-100);
+  --text-body: var(--dark-80);
+  --text-muted: var(--dark-40);
+  --text-on-brand: var(--white);
+  --text-link: var(--soft-blue-500);
+
+  --surface-page: var(--light-10);
+  --surface-card: var(--white);
+  --surface-sunken: var(--light-20);
+  --surface-brand: var(--revvo-blue-500);
+  --surface-inverse: var(--dark-100);
+
+  --border-subtle: var(--light-30);
+  --border-default: var(--light-40);
+  --border-strong: var(--light-50);
+  --border-focus: var(--soft-blue-400);
+
+  --badge-neutral-bg: var(--light-20);
+  --badge-neutral-fg: var(--dark-60);
+  --badge-neutral-dot: var(--dark-40);
+  --badge-blue-bg: var(--soft-blue-100);
+  --badge-blue-fg: var(--soft-blue-600);
+  --badge-blue-dot: var(--soft-blue-400);
+  --badge-green-bg: var(--revvo-green-100);
+  --badge-green-fg: var(--revvo-green-700);
+  --badge-green-dot: var(--revvo-green-500);
+  --badge-success-bg: var(--success-100);
+  --badge-success-fg: var(--revvo-green-700);
+  --badge-success-dot: var(--success-500);
+  --badge-warning-bg: var(--warning-100);
+  --badge-warning-fg: var(--warning-700);
+  --badge-warning-dot: var(--warning-500);
+  --badge-danger-bg: var(--danger-100);
+  --badge-danger-fg: var(--danger-700);
+  --badge-danger-dot: var(--danger-500);
+
+  --alert-info-bg: var(--info-100);
+  --alert-info-border: var(--soft-blue-200);
+  --alert-info-fg: var(--soft-blue-600);
+  --alert-info-icon-bg: var(--soft-blue-600);
+  --alert-success-bg: var(--success-100);
+  --alert-success-border: var(--revvo-green-200);
+  --alert-success-fg: var(--revvo-green-600);
+  --alert-success-icon-bg: var(--revvo-green-600);
+  --alert-warning-bg: var(--warning-100);
+  --alert-warning-border: #F0D69A;
+  --alert-warning-fg: var(--warning-700);
+  --alert-warning-icon-bg: var(--warning-500);
+  --alert-danger-bg: var(--danger-100);
+  --alert-danger-border: #F2BDBB;
+  --alert-danger-fg: var(--danger-700);
+  --alert-danger-icon-bg: var(--danger-500);
+
+  --control-track-off: var(--light-40);
+  --control-border-off: var(--light-50);
+  --control-bg-off: var(--white);
+}
+
+/* ============ Dark theme — set data-theme="dark" on any wrapper ============
+   Phase 1: surface + text aliases only. Components already built on these
+   aliases (Card, StatCard, Input, Select, Checkbox, Switch, Button) adapt
+   automatically. Status-tinted backgrounds (Badge/Alert success/warning/danger)
+   and brand fills are unchanged by design — they read the same in both themes. */
+[data-theme="dark"] {
+  --text-strong: #F4F7FB;
+  --text-body: #C7D2E0;
+  --text-muted: #8FA0B5;
+  --text-on-brand: #ffffff;
+  --text-link: var(--soft-blue-300);
+
+  --surface-page: var(--dark-110);
+  --surface-card: var(--dark-90);
+  --surface-sunken: var(--dark-100);
+  --surface-brand: var(--revvo-blue-400);
+  --surface-inverse: #ffffff;
+
+  --border-subtle: rgba(255,255,255,0.09);
+  --border-default: rgba(255,255,255,0.16);
+  --border-strong: rgba(255,255,255,0.26);
+  --border-focus: var(--soft-blue-300);
+}
+
+/* ============ Phase 2 — Badge / Alert / Switch / Checkbox dark fills ============
+   Semantic tokens so brand-tinted fills (status pills, alert banners, toggle
+   tracks) adapt to dark surfaces without touching the raw scale other
+   components rely on (Avatar, Tabs, StatCard, Table, Button, Menu...). */
+:root {
+  --badge-neutral-bg: var(--light-20);
+  --badge-neutral-fg: var(--dark-60);
+  --badge-neutral-dot: var(--dark-40);
+  --badge-blue-bg: var(--soft-blue-100);
+  --badge-blue-fg: var(--soft-blue-600);
+  --badge-blue-dot: var(--soft-blue-400);
+  --badge-green-bg: var(--revvo-green-100);
+  --badge-green-fg: var(--revvo-green-700);
+  --badge-green-dot: var(--revvo-green-500);
+  --badge-success-bg: var(--success-100);
+  --badge-success-fg: var(--revvo-green-700);
+  --badge-success-dot: var(--success-500);
+  --badge-warning-bg: var(--warning-100);
+  --badge-warning-fg: var(--warning-700);
+  --badge-warning-dot: var(--warning-500);
+  --badge-danger-bg: var(--danger-100);
+  --badge-danger-fg: var(--danger-700);
+  --badge-danger-dot: var(--danger-500);
+
+  --alert-info-bg: var(--info-100);
+  --alert-info-border: var(--soft-blue-200);
+  --alert-info-fg: var(--soft-blue-600);
+  --alert-info-icon-bg: var(--soft-blue-600);
+  --alert-success-bg: var(--success-100);
+  --alert-success-border: var(--revvo-green-200);
+  --alert-success-fg: var(--revvo-green-600);
+  --alert-success-icon-bg: var(--revvo-green-600);
+  --alert-warning-bg: var(--warning-100);
+  --alert-warning-border: #F0D69A;
+  --alert-warning-fg: var(--warning-700);
+  --alert-warning-icon-bg: var(--warning-500);
+  --alert-danger-bg: var(--danger-100);
+  --alert-danger-border: #F2BDBB;
+  --alert-danger-fg: var(--danger-700);
+  --alert-danger-icon-bg: var(--danger-500);
+
+  --control-track-off: var(--light-40);
+  --control-border-off: var(--light-50);
+  --control-bg-off: var(--white);
+}
+
+[data-theme="dark"] {
+  --badge-neutral-bg: var(--surface-sunken);
+  --badge-neutral-fg: var(--text-muted);
+  --badge-neutral-dot: var(--text-muted);
+  --badge-blue-bg: rgba(46, 107, 174, 0.20);
+  --badge-blue-fg: var(--soft-blue-300);
+  --badge-blue-dot: var(--soft-blue-300);
+  --badge-green-bg: rgba(33, 221, 174, 0.16);
+  --badge-green-fg: var(--revvo-green-300);
+  --badge-green-dot: var(--revvo-green-400);
+  --badge-success-bg: rgba(24, 193, 152, 0.18);
+  --badge-success-fg: var(--revvo-green-300);
+  --badge-success-dot: var(--success-500);
+  --badge-warning-bg: rgba(232, 169, 59, 0.18);
+  --badge-warning-fg: #F3C878;
+  --badge-warning-dot: var(--warning-500);
+  --badge-danger-bg: rgba(224, 82, 77, 0.20);
+  --badge-danger-fg: #F29B98;
+  --badge-danger-dot: var(--danger-500);
+
+  --alert-info-bg: rgba(46, 107, 174, 0.16);
+  --alert-info-border: rgba(90, 146, 207, 0.35);
+  --alert-info-fg: var(--soft-blue-300);
+  --alert-success-bg: rgba(24, 193, 152, 0.14);
+  --alert-success-border: rgba(92, 233, 196, 0.35);
+  --alert-success-fg: var(--revvo-green-300);
+  --alert-warning-bg: rgba(232, 169, 59, 0.16);
+  --alert-warning-border: rgba(240, 214, 154, 0.40);
+  --alert-warning-fg: #F3C878;
+  --alert-danger-bg: rgba(224, 82, 77, 0.16);
+  --alert-danger-border: rgba(242, 189, 187, 0.40);
+  --alert-danger-fg: #F29B98;
+
+  --control-track-off: rgba(255, 255, 255, 0.18);
+  --control-border-off: rgba(255, 255, 255, 0.28);
+  --control-bg-off: var(--surface-card);
+}
+
+/* ============ Phase 3 — Avatar / Tabs / Menu / Toast / Tooltip / Table hover ============
+   Raw-scale usages in these components were replaced by the semantic tokens below so
+   they adapt to dark surfaces. Tooltip/Toast invert sensibly (tooltip flips to light on
+   dark; toast lifts to an elevated surface). Kept out of Phase 1/2 blocks to avoid
+   disturbing components that already read the surface/text aliases. */
+:root, [data-theme="light"] {
+  --surface-hover: var(--light-20);           /* menu item + table row hover */
+  --tab-track: var(--light-20);
+  --tab-active-bg: var(--white);
+  --tab-active-fg: var(--revvo-blue-500);
+  --tab-idle-fg: var(--dark-40);
+  --tab-count-idle-bg: var(--light-30);
+  --tab-count-idle-fg: var(--dark-40);
+  --tab-count-active-bg: var(--soft-blue-100);
+  --tab-count-active-fg: var(--soft-blue-600);
+  --tooltip-bg: var(--dark-100);
+  --tooltip-fg: #ffffff;
+  --toast-bg: var(--dark-100);
+  --toast-fg: #ffffff;
+  --toast-fg-muted: rgba(255, 255, 255, 0.75);
+  --toast-close: rgba(255, 255, 255, 0.6);
+  --avatar-blue-bg: var(--soft-blue-100);
+  --avatar-blue-fg: var(--soft-blue-600);
+  --avatar-green-bg: var(--revvo-green-100);
+  --avatar-green-fg: var(--revvo-green-600);
+  --avatar-dark-bg: var(--revvo-blue-500);
+  --avatar-dark-fg: #ffffff;
+  /* Data-viz — categorical series (order = descending share), grid, axis, positive/negative */
+  --chart-1: var(--revvo-blue-500);
+  --chart-2: var(--soft-blue-400);
+  --chart-3: var(--revvo-green-400);
+  --chart-4: var(--light-50);
+  --chart-grid: var(--border-subtle);
+  --chart-axis: var(--text-muted);
+  --chart-pos: var(--revvo-green-400);
+  --chart-neg: var(--danger-500);
+  --chart-area: rgba(33, 221, 174, 0.14);
+  --sidenav-active-bg: var(--soft-blue-100);
+  --sidenav-active-fg: var(--revvo-blue-500);
+}
+
+[data-theme="dark"] {
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --tab-track: var(--surface-sunken);
+  --tab-active-bg: var(--dark-80);
+  --tab-active-fg: #F4F7FB;
+  --tab-idle-fg: var(--text-muted);
+  --tab-count-idle-bg: rgba(255, 255, 255, 0.10);
+  --tab-count-idle-fg: var(--text-muted);
+  --tab-count-active-bg: rgba(46, 107, 174, 0.30);
+  --tab-count-active-fg: var(--soft-blue-300);
+  --tooltip-bg: #F4F7FB;
+  --tooltip-fg: var(--dark-100);
+  --toast-bg: var(--dark-80);
+  --toast-fg: #F4F7FB;
+  --toast-fg-muted: rgba(244, 247, 251, 0.72);
+  --toast-close: rgba(244, 247, 251, 0.55);
+  --avatar-blue-bg: rgba(46, 107, 174, 0.22);
+  --avatar-blue-fg: var(--soft-blue-300);
+  --avatar-green-bg: rgba(33, 221, 174, 0.18);
+  --avatar-green-fg: var(--revvo-green-300);
+  --avatar-dark-bg: var(--revvo-blue-400);
+  --avatar-dark-fg: #ffffff;
+  --chart-1: var(--soft-blue-400);
+  --chart-2: var(--soft-blue-300);
+  --chart-3: var(--revvo-green-400);
+  --chart-4: rgba(255, 255, 255, 0.28);
+  --chart-grid: rgba(255, 255, 255, 0.10);
+  --chart-axis: var(--text-muted);
+  --chart-pos: var(--revvo-green-300);
+  --chart-neg: #F29B98;
+  --chart-area: rgba(33, 221, 174, 0.16);
+  --sidenav-active-bg: rgba(46, 107, 174, 0.22);
+  --sidenav-active-fg: #F4F7FB;
+}
+
+/* ============ Phase 4 — Button (neutral/ghost/disabled), StatCard icon chip, form error text, soft-accent chip ============
+   Final raw-scale holdouts migrated to semantic tokens (24/07/2026 dark-mode audit). Every LIGHT value is
+   identical to the scale value it replaces — zero visual change in light; correct adaptation in dark.
+   StatCard delta reuses the adaptive --badge-success/-danger tokens (Phase 2); only the icon chip below is new. */
+:root, [data-theme="light"] {
+  --accent-soft-bg: var(--soft-blue-100);
+  --accent-soft-fg: var(--soft-blue-600);
+  --text-danger: var(--danger-700);
+  --btn-neutral-bg: var(--white);
+  --btn-neutral-fg: var(--revvo-blue-500);
+  --btn-neutral-border: var(--light-40);
+  --btn-neutral-hover: var(--light-10);
+  --btn-neutral-active: var(--light-20);
+  --btn-ghost-hover: var(--light-20);
+  --btn-ghost-active: var(--light-30);
+  --btn-disabled-bg: var(--light-30);
+  --btn-disabled-fg: var(--dark-20);
+}
+
+[data-theme="dark"] {
+  --accent-soft-bg: rgba(46, 107, 174, 0.22);
+  --accent-soft-fg: var(--soft-blue-300);
+  --text-danger: #F29B98;
+  --btn-neutral-bg: var(--dark-80);
+  --btn-neutral-fg: #F4F7FB;
+  --btn-neutral-border: var(--border-default);
+  --btn-neutral-hover: rgba(255, 255, 255, 0.06);
+  --btn-neutral-active: rgba(255, 255, 255, 0.12);
+  --btn-ghost-hover: rgba(255, 255, 255, 0.08);
+  --btn-ghost-active: rgba(255, 255, 255, 0.14);
+  --btn-disabled-bg: rgba(255, 255, 255, 0.10);
+  --btn-disabled-fg: rgba(255, 255, 255, 0.34);
+}
+
+/* ============ Phase 5 — Table (29/07/2026) ============
+   O cabeçalho lia --surface-sunken, exatamente o MESMO valor da linha zebrada e do hover — por isso
+   não se distinguia do corpo. Agora a tabela tem sua própria escala de 3 degraus, do mais forte ao
+   mais claro: header → zebra → card. No dark o header vai para CIMA (mais claro que o card), que é
+   como bandas de cabeçalho leem em fundo escuro. Todos os valores são sólidos (não rgba), porque a
+   cor é aplicada direto no <tr> e um rgba deixaria o fundo da página vazar por baixo. */
+:root, [data-theme="light"] {
+  --table-header-bg: var(--light-30);
+  --table-header-fg: var(--dark-60);
+  --table-header-border: var(--light-50);
+  --table-zebra-bg: var(--light-10);
+  --table-row-hover: var(--light-20);
+  --table-row-border: var(--border-subtle);
+}
+
+[data-theme="dark"] {
+  --table-header-bg: var(--dark-80);
+  --table-header-fg: #A8B8CC;
+  --table-header-border: rgba(255, 255, 255, 0.18);
+  --table-zebra-bg: var(--dark-100);
+  --table-row-hover: #223148;
+  --table-row-border: rgba(255, 255, 255, 0.08);
+}

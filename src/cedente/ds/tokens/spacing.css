@@ -1,0 +1,44 @@
+/* ============================================================
+   Revvo — Spacing, Radius & Layout Tokens
+   Base unit: 4px. Geometry is calm and rounded but not pill-soft.
+   ============================================================ */
+
+:root {
+  /* Spacing scale (4px base) */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* Borders */
+  --border-width: 1px;          /* @kind spacing */
+  --border-width-strong: 1.5px; /* @kind spacing */
+
+  /* Layout */
+  --container-max: 1200px;  /* @kind spacing */
+  --sidebar-width: 256px;   /* @kind spacing */
+  --header-height: 64px;    /* @kind spacing */
+
+  /* Breakpoints (reference values — hardcode in @media, custom properties don't work in media queries) */
+  --bp-sm: 480px;   /* @kind spacing */
+  --bp-md: 768px;   /* @kind spacing */
+  --bp-lg: 1024px;  /* @kind spacing */
+  --bp-xl: 1280px;  /* @kind spacing */
+}
